@@ -4,6 +4,7 @@
 import { Router } from "express";
 import citiesRouter from "./citiesRoutes.js";
 import passengrsRouter from "./passengersRoutes.js";
+import travelsRouter from "./travelsRoutes.js";
 
 const router = Router()
 
@@ -12,7 +13,10 @@ router.use([
     citiesRouter,
 
     // rotas sobre passagens
-    passengrsRouter
+    passengrsRouter,
+
+    //rotas de vools
+    travelsRouter
 ]);
 
 export default router;
