@@ -6,3 +6,7 @@ export const passengersTable = joi.object({
     lastName: joi.string().min(2).max(100).required()
 });
 
+export const citiesTable = joi.object({
+    
+    name: joi.string().min(2).max(50).required()
+});
