@@ -7,7 +7,8 @@ import { Router } from "express";
 const router = Router()
 
 router.use([
-
+    //rotas das cidades
+    citiesRouter
 ]);
 
 export default router;
