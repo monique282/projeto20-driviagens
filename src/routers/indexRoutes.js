@@ -2,13 +2,17 @@
 // lebrando que todas as Rotas aqui vai pro app
 
 import { Router } from "express";
-
+import citiesRouter from "./citiesRoutes.js";
+import passengrsRouter from "./passengersRoutes.js";
 
 const router = Router()
 
 router.use([
     //rotas das cidades
-    citiesRouter
+    citiesRouter,
+
+    // rotas sobre passagens
+    passengrsRouter
 ]);
 
 export default router;
