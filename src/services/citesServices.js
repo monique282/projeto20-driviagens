@@ -3,6 +3,8 @@
 // ela é chamada nos controles
 // ela chama o repository
 
+import { citesRepositoy } from "../repositories/citesRepository";
+
  async function citesPost(name){
 
     const result = await citesRepositoy.citesPost (name);
