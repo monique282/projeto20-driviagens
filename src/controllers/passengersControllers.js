@@ -7,7 +7,7 @@ export async function firstNameLastNamePost(req, res) {
 
     try {
         // fazendo a requisição enviar o nome e sobrenome para o banco
-        const result = await passengerNameLastName(firstName, lastName);
+        const result = await firstNameLastServices.firstNameLastNamePost (firstName, lastName);
         // se tudo der certo
         res.sendStatus(204);
 
