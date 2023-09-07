@@ -1,6 +1,7 @@
 // essa gunção é chamada la na rota
+// ela chama a servises
 
-import { firstNameLastServices } from "../services/passengersServices.js";
+import { citesServices } from "../services/citesServices.js";
 
 // função que pega os dados de das cidades de partida e chegada
 export async function citesPost(req, res) {
