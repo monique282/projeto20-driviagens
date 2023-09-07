@@ -3,7 +3,7 @@
 // ela é chamada nos controles
 // ela chama o repository
 
-import { citesRepositoy } from "../repositories/citesRepository";
+import { citesRepositoy } from "../repositories/citesRepository.js";
 
  async function citesPost(name){
 
