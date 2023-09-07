@@ -4,6 +4,6 @@ import { citiesTable } from "../schemas/ciFliPaTrSchema.js";
 
 const citiesRouter = Router();
 
-citiesRouter.post("/cities", validateJoiForAll(citiesTable));
+citiesRouter.post("/cities", validateJoiForAll(citiesTable), citesControlles);
 
 export default citiesRouter;
