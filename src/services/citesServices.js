@@ -9,4 +9,4 @@
     return result;
  }
 
- export const firstNameLastServices = {citesPost}
+ export const citesServices = {citesPost}
