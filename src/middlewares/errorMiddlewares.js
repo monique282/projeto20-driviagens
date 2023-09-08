@@ -2,7 +2,7 @@
 
 import httpStatus from "http-status";
 
-export default function  (error, req, res, next){
+export default function errorHandler (error, req, res, next){
 
 // erro de conflito
 if(error.type === "conflict"){
