@@ -12,11 +12,11 @@ export async function firstNameLastNamePost(req, res) {
 
     try {
         // fazendo a requisição enviar o nome e sobrenome para o banco
-        const result = await firstNameLastServices.firstNameLastNamePost (firstName, lastName);
+        const result = await firstNameLastServices.firstNameLastNamePost(firstName, lastName);
         // se tudo der certo
-        res.sendStatus(204);
+        res.sendStatus(httpStatus.NO_CONTENT);
 
     } catch (erro) {
-        res.status(500).send(erro.message);
+        res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
     };
 }
