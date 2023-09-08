@@ -15,4 +15,5 @@ export async function citesPost(req, res) {
         const result = await citesServices.citesPost (name);
         // se tudo der certo
         res.sendStatus(httpStatus.NO_CONTENT);
+        
 }
