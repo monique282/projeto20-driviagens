@@ -7,7 +7,7 @@ import { firstNameLastRepositoy } from "../repositories/passengersRepository.js"
       throw errors.notFound("Nome")
    }
    if(!lastName || lastName === ""){
-    throw allMistakes.notFound("Sobre-nome")
+    throw errors.notFound("Sobre-nome")
  }
 
 

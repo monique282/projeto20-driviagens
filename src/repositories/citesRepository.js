@@ -5,7 +5,7 @@ import { db } from "../dataBase/databaseConnection.js";
 
 // essa função e pra adicionar a cidades no banco
 async function citesPost(name) {
-
+    
     const serveSend = await db.query('INSERT INTO cities (name) VALUES ($1)', [name]);
     return serveSend;
 };
@@ -14,8 +14,8 @@ async function citesPost(name) {
 
 async function citesNameGet(name){
 
-    const citesNameResult = await db.query('SELECT * FROM cities WHERE name = $1;' [name]);
-    return citesNameResult;
+    const citesNameResult = await db.query('SELECT * FROM cities WHERE name = $1;', [name]);
+    return citesNameResult.rows;
 }
 
 
