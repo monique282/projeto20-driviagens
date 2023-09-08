@@ -1,7 +1,9 @@
 // essa gunção é chamada la na rota
 // ela chama a servises
 
+import httpStatus from "http-status";
 import { citesServices } from "../services/citesServices.js";
+
 
 // função que pega os dados de das cidades de partida e chegada
 export async function citesPost(req, res) {
@@ -13,9 +15,9 @@ export async function citesPost(req, res) {
         // fazendo a requisição enviar o nome da cidade para o banco
         const result = await citesServices.citesPost (name);
         // se tudo der certo
-        res.sendStatus(204);
+        res.sendStatus(httpStatus.NO_CONTENT);
 
     } catch (erro) {
-        res.status(500).send(erro.message);
+        res.sendStatus(httpStatus.INTERNAL_SERVER_ERROR);
     };
 }
