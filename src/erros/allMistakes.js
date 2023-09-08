@@ -1,7 +1,7 @@
 
 // esse arquivo serve para colocar os erros quando der algum
 
-export function notFoundError(item){
+export function notFound(item = "Item"){
     return{
         type:"notFound",
         message: `${item} não foi encontrado`
