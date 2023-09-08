@@ -12,11 +12,11 @@ async function citesPost(name) {
 
 // essa função é pra pegar toas as cidade ja aciodopnadas no banco
 
-async function citesGetName(name){
+async function citesNameGet(name){
 
     const citesNameResult = await db.query('SELECT * FROM cities WHERE name = $1;' [name]);
     return citesNameResult;
 }
 
 
-export const citesRepositoy = { citesPost , citesGetName}
+export const citesRepositoy = { citesPost , citesNameGet}
