@@ -7,6 +7,13 @@ export const passengersTable = joi.object({
 });
 
 export const citiesTable = joi.object({
-    
+
     name: joi.string().min(2).max(50).required()
+});
+
+export const flightsTable = joi.object({
+
+    origin: joi.number().integer().required(),
+    destination: joi.number().integer().required(),
+    date: joi.string().pattern(new RegExp(/^\d{2}-\d{2}-\d{4}$/)).required()
 });
