@@ -5,17 +5,18 @@
 
 import dayjs from "dayjs";
 import { errors } from "../errors/allMistakes.js";
+import { citesRepository } from "../repositories/citesRepository.js";
 
 async function flightsPost(origin, destination, date) {
 
     // verificando se a cidade de origin existe na tabela de cidades
-    const thereIsCityOrigin = await citesRepositoy.citesIdGet(origin);
+    const thereIsCityOrigin = await citesRepository.citesIdGet(origin);
     if (thereIsCityOrigin.length === 0) {
         throw errors.notFound(origin);
     }
 
     // verificando se a cidade de destino existe na tabela de cidades
-    const thereIsCityDestination = await citesRepositoy.citesIdGet(destination);
+    const thereIsCityDestination = await citesRepository.citesIdGet(destination);
     if (thereIsCityDestination.length === 0) {
         throw errors.notFound(destination);
     }
@@ -39,7 +40,7 @@ async function flightsPost(origin, destination, date) {
         throw errors.UnprocessableEntity();
     }
 
-    
+
 
     return result;
 }

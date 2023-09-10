@@ -25,4 +25,4 @@ async function citesIdGet(id){
 }
 
 
-export const citesRepositoy = { citesPost , citesNameGet, citesIdGet}
+export const citesRepository = { citesPost , citesNameGet, citesIdGet}
