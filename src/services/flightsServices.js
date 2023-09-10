@@ -3,6 +3,7 @@
 // ela é chamada nos controles
 // ela chama o repository
 
+import dayjs from "dayjs";
 import { errors } from "../errors/allMistakes.js";
 
 async function flightsPost(origin, destination, date) {
@@ -23,7 +24,20 @@ async function flightsPost(origin, destination, date) {
     if (origin === destination) {
         // se forem iguais tem que dar conflito
         throw errors.equalConflicts();
-      }
+    }
+
+    // preciso verificar se a data do voo é no futuro
+    // pegando a data atual
+    const currentDate = dayjs().format('DD-MM-YYYY');
+
+    // tranformanfo a informação da data passada pelo usuario para a data
+    const flightDate = dayjs(date, 'DD-MM-YYYY');
+
+    // verificando de a data do voo é anterior a data atual
+    if (flightDate.isBefore(currentDate)) {
+        // se a data do voo não for maior que a data atual
+        throw errors.UnprocessableEntity();
+    }
 
     return result;
 }
