@@ -18,7 +18,7 @@ async function travelsPost(passengerId, flightId) {
    // verificar se o voo existe no banco
    const thereIsflights = await flightsRepository.flightId(flightId);
    if (thereIsflights.length === 0) {
-      throw errors.notFound("Reserva de voo não encontrado(a)");
+      throw errors.notFound("Reserva de voo");
    }
 
    const result = await travelsRepository.travelsPost(passengerId, flightId);
