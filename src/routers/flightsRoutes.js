@@ -7,6 +7,6 @@ import { flightsPost } from "../controllers/flightsControllers.js";
 const flightsRouter = Router();
 
 flightsRouter.post("/flights", validateJoiForAll(flightsTable), flightsPost);
-flightsRouter.get("/flights");
+flightsRouter.get("/flights",flightsGet );
 
 export default flightsRouter;
