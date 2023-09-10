@@ -4,16 +4,24 @@
 // ela chama o repository
 
 import { errors } from "../errors/allMistakes.js";
+import { flightsRepository } from "../repositories/flightsRepository.js";
 import { passengersRepository } from "../repositories/passengersRepository.js";
 
 async function travelsPost(passengerId, flightId) {
-   
+
+   // verificar de o passageiro existe no banco
    const thereIsCity = await passengersRepository.idPassengersGet(passengerId);
-   if(thereIsCity.length !== 0){
-      throw errors.notFound("passageiro(a)");
+   if (thereIsCity.length === 0) {
+      throw errors.notFound("Passageiro(a)");
    }
 
-    const result = await travelsRepository.travelsPost(passengerId, flightId);
+   // verificar se o voo existe no banco
+   const thereIsflights = await flightsRepository.flightId(flightId);
+   if (thereIsflights.length === 0) {
+      throw errors.notFound("Reserva de voo não encontrado(a)");
+   }
+
+   const result = await travelsRepository.travelsPost(passengerId, flightId);
    return result;
 }
 
