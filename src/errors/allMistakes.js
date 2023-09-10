@@ -22,4 +22,12 @@ export function equalConflicts() {
     }
 }
 
+export function UnprocessableEntity() {
+    return {
+        type: "Unprocessable Entity",
+        message: `A data do voo deve ser maior do que a data atual.`
+    }
+}
+
+
 export const errors = { notFound, conflict }
