@@ -10,7 +10,7 @@ async function travelsPost(passengerId, flightId) {
    
    const thereIsCity = await passengersRepository.idPassengersGet(passengerId);
    if(thereIsCity.length !== 0){
-      throw errors.notFound();
+      throw errors.notFound("passageiro(a)");
    }
 
     const result = await travelsRepository.travelsPost(passengerId, flightId);

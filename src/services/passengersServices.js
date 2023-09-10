@@ -1,5 +1,5 @@
 import { errors } from "../errors/allMistakes.js";
-import { firstNameLastRepositoy, passengersRepository } from "../repositories/passengersRepository.js";
+import { passengersRepository } from "../repositories/passengersRepository.js";
 
  async function firstNameLastNamePost(firstName, lastName){
 

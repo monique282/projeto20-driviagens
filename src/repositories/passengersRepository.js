@@ -8,6 +8,11 @@ async function firstNameLastNamePost(firstName, lastName) {
     return serveSend;
 };
 
+//função pra pegar o usuario por id
+async function idPassengersGet(id) {
 
+    const serveSend = await db.query('SELECT * FROM passengers WHERE id = $1;', [id]);
+    return serveSend;
+};
 
 export const passengersRepository = { firstNameLastNamePost, idPassengersGet }
