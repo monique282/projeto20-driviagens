@@ -18,5 +18,11 @@ async function citesNameGet(name){
     return citesNameResult.rows;
 }
 
+async function citesIdGet(id){
 
-export const citesRepositoy = { citesPost , citesNameGet}
+    const citesNameResult = await db.query('SELECT * FROM cities WHERE id = $1;', [id]);
+    return citesNameResult.rows;
+}
+
+
+export const citesRepositoy = { citesPost , citesNameGet, citesIdGet}

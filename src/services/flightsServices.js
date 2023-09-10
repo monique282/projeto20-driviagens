@@ -39,6 +39,8 @@ async function flightsPost(origin, destination, date) {
         throw errors.UnprocessableEntity();
     }
 
+    
+
     return result;
 }
 
