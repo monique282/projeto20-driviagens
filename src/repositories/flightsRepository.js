@@ -18,38 +18,30 @@ async function idflightsGet(id) {
 
 // função que pega dos dados do banco
 async function flightsGet(origin) {
-
-    
-    const serveSend = await db.query(`
-    SELECT 
+console.log("aqui")
+    let sql = `
+SELECT 
     flights.id AS id,
     origin.name AS origin,
     destination.name AS destination,
-    TO_CHAR(flights.date, 'DD-MM-YYYY') AS date
-    FROM flights
-    JOIN cities AS origin ON flights.origin = origin.id
-    JOIN cities AS destination ON flights.destination = destination.id
-    ORDER BY flights.date;
-`);
+    TO_CHAR(flights.date, 'DD-MM-YYYY') AS formatted_date
+FROM flights
+JOIN cities AS origin ON flights.origin = origin.id
+JOIN cities AS destination ON flights.destination = destination.id
+`;
 
-// let sql = `
-// SELECT 
-//     flights.id AS id,
-//     origin.name AS origin,
-//     destination.name AS destination,
-//     TO_CHAR(flights.date, 'DD-MM-YYYY') AS formatted_date
-// FROM flights
-// JOIN cities AS origin ON flights.origin = origin.id
-// JOIN cities AS destination ON flights.destination = destination.id
-// `;
+    // colocando os parametros
+    const values = []
+    // se existir a vontade de ordenar origem
+    if (origin) {
+        sql += `WHERE origin.name = $1`;
+        values.push(origin);
+    }
 
-// // se existir a vontade de ordenar origem
-// if (origin) {
-//     sql += `WHERE origin.name = '$1'`, [origin];
-// }
+    // adicionando a ordenação por cidade
+    sql += ' ORDER BY flights.date';
 
-// // adicionando a ordenação por cidade
-// sql += ' ORDER BY flights.date';
+    const serveSend = await db.query(sql, values);
     return serveSend.rows;
 };
 

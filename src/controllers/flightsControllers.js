@@ -22,7 +22,6 @@ export async function flightsPost(req, res) {
 export async function flightsGet(req, res) {
 
     const origin = req.query.origin
-   
     // fazendo a verificação se ta tudo certo
     const result = await flightsServices.flightsGet(origin);
    
