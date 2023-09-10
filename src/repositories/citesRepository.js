@@ -10,7 +10,7 @@ async function citesPost(name) {
     return serveSend;
 };
 
-// essa função é pra pegar toas as cidade ja aciodopnadas no banco
+// essa função é pra pegar toas as cidade ja aciodonadas no banco
 
 async function citesNameGet(name){
 
