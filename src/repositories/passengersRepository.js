@@ -14,7 +14,7 @@ async function firstNameLastNamePost(firstName, lastName) {
 async function idPassengersGet(id) {
 
     const serveSend = await db.query('SELECT * FROM passengers WHERE id = $1;', [id]);
-    return serveSend;
+    return serveSend.rows;
 };
 
 export const passengersRepository = { firstNameLastNamePost, idPassengersGet }

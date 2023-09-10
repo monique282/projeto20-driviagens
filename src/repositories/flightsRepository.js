@@ -13,7 +13,7 @@ import { db } from "../dataBase/databaseConnection.js";
 async function idflightsGet(id) {
 
     const serveSend = await db.query('SELECT * FROM flights WHERE id = $1;', [id]);
-    return serveSend;
+    return serveSend.rows;
 };
   
  export const flightsRepository = {flightsPost, idflightsGet}

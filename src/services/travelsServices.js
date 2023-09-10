@@ -9,7 +9,7 @@ import { passengersRepository } from "../repositories/passengersRepository.js";
 import { travelsRepository } from "../repositories/travelsRepository.js";
 
 async function travelsPost(passengerId, flightId) {
-
+   
    // verificar de o passageiro existe no banco
    const thereIsCity = await passengersRepository.idPassengersGet(passengerId);
    if (thereIsCity.length === 0) {
@@ -17,12 +17,13 @@ async function travelsPost(passengerId, flightId) {
    }
 
    // verificar se o voo existe no banco
-   const thereIsflights = await flightsRepository.flightId(flightId);
+   const thereIsflights = await flightsRepository.idflightsGet(flightId);
    if (thereIsflights.length === 0) {
       throw errors.notFound("Reserva de voo");
    }
 
    const result = await travelsRepository.travelsPost(passengerId, flightId);
+ 
    return result;
 }
 
