@@ -17,7 +17,7 @@ async function idflightsGet(id) {
 };
 
 // função que pega dos dados do banco
-async function flightsGet(origin, destination) {
+async function flightsGet(origin, destination, smallerDate, biggerDate) {
 
     let sql = `
 SELECT 
@@ -33,20 +33,42 @@ JOIN cities AS destination ON flights.destination = destination.id
     // colocando os parametros
     const values = []
 
+    // contador 
+    let paramCount = 0;
+
     // se existir a vontade de ordenar origem
     if (origin) {
-        sql += `WHERE origin.name = $1`;
+        paramCount++;
+        sql += ` WHERE origin.name = $${paramCount}`;
         values.push(origin);
     }
 
     // se existir a vontade de ordenar destination
     if (destination) {
-        sql += `WHERE destination.name = $1`;
+        paramCount++;
+        if (paramCount > 1) {
+            sql += ` AND destination.name = $${paramCount}`;
+        } else {
+            sql += ` WHERE destination.name = $${paramCount}`;
+        }
         values.push(destination);
     }
+
+    // procurar por periodo de data
+    if (smallerDate && biggerDate) {
+        paramCount += 2;
+        if (paramCount > 2) {
+            sql += ` AND flights.date >= $${paramCount - 1} AND flights.date <= $${paramCount}`;
+        } else {
+            sql += ` WHERE flights.date >= $${paramCount - 1} AND flights.date <= $${paramCount}`;
+        }
+        values.push(smallerDate, biggerDate);
+    }
+
     // adicionando a ordenação por cidade
     sql += ' ORDER BY flights.date';
 
+    console.log(sql, values)
     const serveSend = await db.query(sql, values);
     return serveSend.rows;
 };

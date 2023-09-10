@@ -23,8 +23,10 @@ export async function flightsGet(req, res) {
 
     const origin = req.query.origin
     const destination = req.query.destination
+    const smallerDate = req.query['smaller-date'];
+    const biggerDate = req.query['bigger-date'];
     // fazendo a verificação se ta tudo certo
-    const result = await flightsServices.flightsGet(origin, destination);
+    const result = await flightsServices.flightsGet(origin, destination, smallerDate, biggerDate);
    
     // se tudo der certo
     res.send(result).status(httpStatus.NO_CONTENT);
