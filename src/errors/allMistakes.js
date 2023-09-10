@@ -11,8 +11,10 @@ export function notFound(item = "Item") {
 export function conflict(item = "Item") {
     return {
         type: "conflict",
-        message: `${item} está em comflito pois ja foi adicionada`
+        message: `${item} está em conflito pois ja foi adicionada`
     }
 }
+
+
 
 export const errors = { notFound, conflict }

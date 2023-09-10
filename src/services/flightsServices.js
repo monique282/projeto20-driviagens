@@ -19,6 +19,12 @@ async function flightsPost(origin, destination, date) {
         throw errors.notFound(destination);
     }
 
+    //verificando de origem e destino são iguais
+    if (origin === destination) {
+        // se forem iguais tem que dar conflito
+        throw errors.equalConflicts();
+      }
+
     return result;
 }
 
