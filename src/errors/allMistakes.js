@@ -4,7 +4,7 @@
 export function notFound(item = "Item") {
     return {
         type: "notFound",
-        message: `${item} não foi encontrado`
+        message: `${item} não encontrado(a)`
     }
 }
 
@@ -30,4 +30,4 @@ export function UnprocessableEntity() {
 }
 
 
-export const errors = { notFound, conflict }
+export const errors = { notFound, conflict, UnprocessableEntity, equalConflicts }

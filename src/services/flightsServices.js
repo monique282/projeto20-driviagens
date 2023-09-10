@@ -4,22 +4,24 @@
 // ela chama o repository
 
 import dayjs from "dayjs";
+import customParseFormat from 'dayjs/plugin/customParseFormat.js';
 import { errors } from "../errors/allMistakes.js";
 import { citesRepository } from "../repositories/citesRepository.js";
 import { flightsRepository } from "../repositories/flightsRepository.js";
+dayjs.extend(customParseFormat);
 
 async function flightsPost(origin, destination, date) {
 
     // verificando se a cidade de origin existe na tabela de cidades
     const thereIsCityOrigin = await citesRepository.citesIdGet(origin);
     if (thereIsCityOrigin.length === 0) {
-        throw errors.notFound(origin);
+        throw errors.notFound("A cidade");
     }
 
     // verificando se a cidade de destino existe na tabela de cidades
     const thereIsCityDestination = await citesRepository.citesIdGet(destination);
     if (thereIsCityDestination.length === 0) {
-        throw errors.notFound(destination);
+        throw errors.notFound("A cidade ");
     }
 
     //verificando de origem e destino são iguais
@@ -30,13 +32,15 @@ async function flightsPost(origin, destination, date) {
 
     // preciso verificar se a data do voo é no futuro
     // pegando a data atual
-    const currentDate = dayjs().format('DD-MM-YYYY');
-
+    const currentDate = new Date();
+    console.log(currentDate)
     // tranformanfo a informação da data passada pelo usuario para a data
-    const flightDate = dayjs(date, 'DD-MM-YYYY');
+    const flightDate = dayjs(date, 'DD-MM-YYYY').toDate();
+    console.log(flightDate)
 
     // verificando de a data do voo é anterior a data atual
-    if (flightDate.isBefore(currentDate)) {
+    if (flightDate <= currentDate) {
+        console.log("aqui")
         // se a data do voo não for maior que a data atual
         throw errors.UnprocessableEntity();
     }
