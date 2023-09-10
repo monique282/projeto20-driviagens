@@ -17,8 +17,8 @@ async function idflightsGet(id) {
 };
 
 // função que pega dos dados do banco
-async function flightsGet(origin) {
-console.log("aqui")
+async function flightsGet(origin, destination) {
+
     let sql = `
 SELECT 
     flights.id AS id,
@@ -32,12 +32,18 @@ JOIN cities AS destination ON flights.destination = destination.id
 
     // colocando os parametros
     const values = []
+
     // se existir a vontade de ordenar origem
     if (origin) {
         sql += `WHERE origin.name = $1`;
         values.push(origin);
     }
 
+    // se existir a vontade de ordenar destination
+    if (destination) {
+        sql += `WHERE destination.name = $1`;
+        values.push(destination);
+    }
     // adicionando a ordenação por cidade
     sql += ' ORDER BY flights.date';
 

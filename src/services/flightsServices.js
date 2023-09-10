@@ -49,10 +49,10 @@ async function flightsPost(origin, destination, date) {
 
 }
 
-async function flightsGet(origin) {
-    
+async function flightsGet(origin, destination) {
+
     //se tudo cer certo vou enviar os dados para o baco
-    const result = await flightsRepository.flightsGet(origin);
+    const result = await flightsRepository.flightsGet(origin, destination);
     return result;
 }
 
