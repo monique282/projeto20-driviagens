@@ -40,9 +40,10 @@ async function flightsPost(origin, destination, date) {
         throw errors.UnprocessableEntity();
     }
 
-
-
+    //se tudo cer certo vou enviar os dados para o baco
+    const result = await flightsRepositoy.flightsPost(origin, destination, date);
     return result;
+
 }
 
 export const flightsServices = { flightsPost }
