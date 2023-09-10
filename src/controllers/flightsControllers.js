@@ -25,6 +25,6 @@ export async function flightsGet(req, res) {
     const result = await flightsServices.flightsGet();
    
     // se tudo der certo
-    res.sendStatus(httpStatus.NO_CONTENT);
+    res.send(result).status(httpStatus.NO_CONTENT);
 
 }

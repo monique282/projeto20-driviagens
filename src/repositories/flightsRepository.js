@@ -18,8 +18,17 @@ async function idflightsGet(id) {
 
 // função que pega dos dados do banco
 async function flightsGet() {
-    const serveSend = await db.query('SELECT * FROM flights;');
-    return serveSend;
+    const serveSend = await db.query(`
+    SELECT 
+    flights.id AS id,
+    origin.name AS origin,
+    destination.name AS destination,
+    TO_CHAR(flights.date, 'DD-MM-YYYY') AS date
+    FROM flights
+    JOIN cities AS origin ON flights.origin = origin.id
+    JOIN cities AS destination ON flights.destination = destination.id;
+`);
+    return serveSend.rows;
 };
 
 export const flightsRepository = { flightsPost, idflightsGet, flightsGet }
