@@ -1,5 +1,5 @@
 import { errors } from "../errors/allMistakes.js";
-import { firstNameLastRepositoy } from "../repositories/passengersRepository.js";
+import { firstNameLastRepositoy, passengersRepository } from "../repositories/passengersRepository.js";
 
  async function firstNameLastNamePost(firstName, lastName){
 
@@ -11,7 +11,7 @@ import { firstNameLastRepositoy } from "../repositories/passengersRepository.js"
  }
 
 
-    const result = await firstNameLastRepositoy.firstNameLastNamePost (firstName, lastName);
+    const result = await passengersRepository.firstNameLastNamePost (firstName, lastName);
     return result;
  }
 
