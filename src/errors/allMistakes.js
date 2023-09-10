@@ -15,6 +15,11 @@ export function conflict(item = "Item") {
     }
 }
 
-
+export function equalConflicts() {
+    return {
+        type: "conflict",
+        message: `Origem e destino não podem ser iguais`
+    }
+}
 
 export const errors = { notFound, conflict }
