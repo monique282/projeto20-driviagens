@@ -1,4 +1,4 @@
-// essa gunção é chamada la na rota
+// essa pasta é chamada la em routes
 // ela chama a servises
 
 import httpStatus from "http-status";

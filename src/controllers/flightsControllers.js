@@ -1,6 +1,8 @@
+// essa pasta é chamada la em routes
+// ela chama a servises
+
 import httpStatus from "http-status";
 import { flightsServices } from "../services/flightsServices.js";
-
 
 // função que pega os dados de da viagem como destino partida e data de voo
 export async function flightsPost(req, res) {

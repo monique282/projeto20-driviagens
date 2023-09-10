@@ -1,4 +1,5 @@
-// essa gunção é chamada la na rota
+// essa pasta é chamada la em routes
+// ela chama a servises
 
 import { firstNameLastServices } from "../services/passengersServices.js";
 
@@ -8,9 +9,9 @@ export async function firstNameLastNamePost(req, res) {
     // pegando os dados enviados pelo body
     const { firstName, lastName } = req.body;
 
-        // fazendo a requisição enviar o nome e sobrenome para o banco
-        const result = await firstNameLastServices.firstNameLastNamePost(firstName, lastName);
-        // se tudo der certo
-        res.sendStatus(httpStatus.NO_CONTENT);
+    // fazendo a requisição enviar o nome e sobrenome para o banco
+    const result = await firstNameLastServices.firstNameLastNamePost(firstName, lastName);
+    // se tudo der certo
+    res.sendStatus(httpStatus.NO_CONTENT);
 
 }

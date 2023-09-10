@@ -6,6 +6,7 @@
 import { errors } from "../errors/allMistakes.js";
 import { flightsRepository } from "../repositories/flightsRepository.js";
 import { passengersRepository } from "../repositories/passengersRepository.js";
+import { travelsRepository } from "../repositories/travelsRepository.js";
 
 async function travelsPost(passengerId, flightId) {
 
