@@ -1,3 +1,5 @@
+// essa função é chamada la la no sevises
+
 import { db } from "../dataBase/databaseConnection.js";
 
 
