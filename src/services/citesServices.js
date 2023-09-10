@@ -4,7 +4,7 @@
 // ela chama o repository
 
 import { errors } from "../errors/allMistakes.js";
-import { citesRepositoy } from "../repositories/citesRepository.js";
+import { citesRepository } from "../repositories/citesRepository.js";
 
 async function citesPost(name) {
    
@@ -13,7 +13,7 @@ async function citesPost(name) {
       throw errors.conflict(name);
    }
 
-    const result = await citesRepositoy.citesPost(name);
+    const result = await citesRepository.citesPost(name);
    return result;
 }
 

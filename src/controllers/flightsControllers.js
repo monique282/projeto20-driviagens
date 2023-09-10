@@ -1,4 +1,5 @@
 import httpStatus from "http-status";
+import { flightsServices } from "../services/flightsServices.js";
 
 
 // função que pega os dados de da viagem como destino partida e data de voo
