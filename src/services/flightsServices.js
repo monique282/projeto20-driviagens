@@ -32,15 +32,13 @@ async function flightsPost(origin, destination, date) {
 
     // preciso verificar se a data do voo é no futuro
     // pegando a data atual
-    const currentDate = new Date();
-    console.log(currentDate)
-    // tranformanfo a informação da data passada pelo usuario para a data
-    const flightDate = dayjs(date, 'DD-MM-YYYY').toDate();
-    console.log(flightDate)
+    const currentDate = dayjs().format('DD-MM-YYYY');
 
+    // tranformanfo a informação da data passada pelo usuario para a data
+    const flightDate = dayjs(date, 'DD-MM-YYYY');
+    
     // verificando de a data do voo é anterior a data atual
-    if (flightDate <= currentDate) {
-        console.log("aqui")
+    if (flightDate.isBefore(currentDate)) {
         // se a data do voo não for maior que a data atual
         throw errors.UnprocessableEntity();
     }
