@@ -1,7 +1,7 @@
 import { errors } from "../errors/allMistakes.js";
 import { passengersRepository } from "../repositories/passengersRepository.js";
 
- async function firstNameLastNamePost(firstName, lastName){
+ async function passengersPost(firstName, lastName){
 
    if(!firstName || firstName === "" ){
       throw errors.notFound("Nome")
@@ -11,8 +11,8 @@ import { passengersRepository } from "../repositories/passengersRepository.js";
  }
 
 
-    const result = await passengersRepository.firstNameLastNamePost (firstName, lastName);
+    const result = await passengersRepository.passengersPost(firstName, lastName);
     return result;
  }
 
- export const firstNameLastServices = {firstNameLastNamePost}
+ export const passengersServices = {passengersPost}

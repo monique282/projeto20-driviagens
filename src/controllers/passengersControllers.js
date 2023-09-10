@@ -1,16 +1,18 @@
 // essa pasta é chamada la em routes
 // ela chama a servises
 
-import { firstNameLastServices } from "../services/passengersServices.js";
+import httpStatus from "http-status";
+import { passengersServices } from "../services/passengersServices.js";
 
 // função que pega os dados de nome e sobrenome
-export async function firstNameLastNamePost(req, res) {
+export async function passengersPost(req, res) {
 
     // pegando os dados enviados pelo body
     const { firstName, lastName } = req.body;
 
     // fazendo a requisição enviar o nome e sobrenome para o banco
-    const result = await firstNameLastServices.firstNameLastNamePost(firstName, lastName);
+    const result = await passengersServices.passengersPost(firstName, lastName);
+   
     // se tudo der certo
     res.sendStatus(httpStatus.NO_CONTENT);
 

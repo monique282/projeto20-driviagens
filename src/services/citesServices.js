@@ -7,8 +7,7 @@ import { errors } from "../errors/allMistakes.js";
 import { citesRepository } from "../repositories/citesRepository.js";
 
 async function citesPost(name) {
-   
-   const thereIsCity = await citesRepositoy.citesNameGet(name);
+   const thereIsCity = await citesRepository.citesNameGet(name);
    if(thereIsCity.length !== 0){
       throw errors.conflict(name);
    }
