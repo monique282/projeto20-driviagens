@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { validateJoiForAll } from "../middlewares/validateSchema.js";
 import { flightsTable } from "../schemas/ciFliPaTrSchema.js";
-import { flightsPost } from "../controllers/flightsControllers.js";
+import { flightsGet, flightsPost } from "../controllers/flightsControllers.js";
 
 
 const flightsRouter = Router();

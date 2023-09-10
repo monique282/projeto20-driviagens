@@ -17,3 +17,14 @@ export async function flightsPost(req, res) {
     res.sendStatus(httpStatus.NO_CONTENT);
 
 }
+
+// função que pega os dados de da viagem como destino partida e data de voo
+export async function flightsGet(req, res) {
+   
+    // fazendo a verificação se ta tudo certo
+    const result = await flightsServices.flightsGet();
+   
+    // se tudo der certo
+    res.sendStatus(httpStatus.NO_CONTENT);
+
+}
