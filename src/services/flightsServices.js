@@ -6,6 +6,7 @@
 import dayjs from "dayjs";
 import { errors } from "../errors/allMistakes.js";
 import { citesRepository } from "../repositories/citesRepository.js";
+import { flightsRepository } from "../repositories/flightsRepository.js";
 
 async function flightsPost(origin, destination, date) {
 
@@ -41,7 +42,7 @@ async function flightsPost(origin, destination, date) {
     }
 
     //se tudo cer certo vou enviar os dados para o baco
-    const result = await flightsRepositoy.flightsPost(origin, destination, date);
+    const result = await flightsRepository.flightsPost(origin, destination, date);
     return result;
 
 }
