@@ -36,6 +36,13 @@ export function BadRequest(item) {
     }
 }
 
+export function intervalServerError(item) {
+    return {
+        type: "internal server error",
+        message: `${item}`
+    }
+}
 
 
-export const errors = { notFound, conflict, UnprocessableEntity, equalConflicts, BadRequest }
+
+export const errors = { notFound, conflict, UnprocessableEntity, equalConflicts, BadRequest, intervalServerError }

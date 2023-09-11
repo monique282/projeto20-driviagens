@@ -15,4 +15,10 @@ async function passengersPost(firstName, lastName) {
    return result;
 }
 
-export const passengersServices = { passengersPost }
+async function passengersGet(name) {
+
+   const result = await passengersRepository.passengersGet(name);
+   return result;
+}
+
+export const passengersServices = { passengersPost, passengersGet }

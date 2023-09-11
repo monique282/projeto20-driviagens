@@ -4,7 +4,7 @@
 import httpStatus from "http-status";
 import { passengersServices } from "../services/passengersServices.js";
 
-// função que pega os dados de nome e sobrenome
+// função que envia os dados de nome e sobrenome
 export async function passengersPost(req, res) {
 
     // pegando os dados enviados pelo body
@@ -15,5 +15,19 @@ export async function passengersPost(req, res) {
    
     // se tudo der certo
     res.sendStatus(httpStatus.NO_CONTENT);
+
+}
+
+// função que pega os dados de nome e quantidade de vools
+export async function passengersGet(req, res) {
+
+    // pegando os dados enviados pelo query
+    const { name } = req.query;
+
+    // fazendo a requisição enviar o nome e sobrenome para o banco
+    const result = await passengersServices.passengersGet(name);
+   
+    // se tudo der certo
+    res.send(result).status(httpStatus.NO_CONTENT);
 
 }

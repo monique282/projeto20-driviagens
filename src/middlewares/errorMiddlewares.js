@@ -24,5 +24,10 @@ if(error.type === "Bad request"){
     return res.status(httpStatus.BAD_REQUEST).send(error.message)
 }
 
+// erro de "erro do sevidor interno" 500
+if(error.type === "internal server error"){
+    return res.status(httpStatus.INTERNAL_SERVER_ERROR).send(error.message)
+}
+
 return res.status(httpStatus.INTERNAL_SERVER_ERROR).send("Sorry, something went wrong")
 }
