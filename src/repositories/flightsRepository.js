@@ -18,7 +18,7 @@ async function idflightsGet(id) {
 
 // função que pega dos dados do banco
 async function flightsGet(origin, destination, smallerDate, biggerDate) {
-console.log( smallerDate, biggerDate)
+
     let sql = `
 SELECT 
     flights.id AS id,
