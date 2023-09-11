@@ -1,3 +1,4 @@
+// essa função é pra reunuir todas as rotas relacionadas as viagens
 
 import { Router } from "express";
 import { validateJoiForAll } from "../middlewares/validateSchema.js";
