@@ -22,12 +22,13 @@ export function equalConflicts() {
     }
 }
 
-export function UnprocessableEntity() {
+export function UnprocessableEntity(item) {
     return {
         type: "Unprocessable Entity",
-        message: `A data do voo deve ser maior do que a data atual.`
+        message: `${item}`
     }
 }
+
 
 
 export const errors = { notFound, conflict, UnprocessableEntity, equalConflicts }

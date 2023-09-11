@@ -68,7 +68,6 @@ JOIN cities AS destination ON flights.destination = destination.id
     // adicionando a ordenação por cidade
     sql += ' ORDER BY flights.date';
 
-    console.log(sql, values)
     const serveSend = await db.query(sql, values);
     return serveSend.rows;
 };

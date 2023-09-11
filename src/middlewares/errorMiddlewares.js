@@ -19,5 +19,6 @@ if(error.type === "Unprocessable Entity"){
     return res.status(httpStatus.UNPROCESSABLE_ENTITY).send(error.message)
 }
 
+
 return res.status(httpStatus.INTERNAL_SERVER_ERROR).send("Sorry, something went wrong")
 }

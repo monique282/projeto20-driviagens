@@ -18,6 +18,12 @@ export const flightsTable = joi.object({
     date: joi.string().pattern(new RegExp(/^\d{2}-\d{2}-\d{4}$/)).required()
 });
 
+export const flightsGetTable = joi.object({
+    
+    'smaller-date': joi.string().regex(/^\d{2}-\d{2}-\d{4}$/),
+    'bigger-date': joi.string().regex(/^\d{2}-\d{2}-\d{4}$/)
+  });
+
 export const travelsTable = joi.object({
 
     passengerId: joi.number().integer().required(),

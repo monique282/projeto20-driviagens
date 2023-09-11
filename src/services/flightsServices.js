@@ -5,9 +5,10 @@
 
 import dayjs from "dayjs";
 import customParseFormat from 'dayjs/plugin/customParseFormat.js';
-import { errors } from "../errors/allMistakes.js";
+import { UnprocessableEntity, errors } from "../errors/allMistakes.js";
 import { citesRepository } from "../repositories/citesRepository.js";
 import { flightsRepository } from "../repositories/flightsRepository.js";
+import { flightsGetTable } from "../schemas/ciFliPaTrSchema.js";
 dayjs.extend(customParseFormat);
 
 async function flightsPost(origin, destination, date) {
@@ -36,11 +37,11 @@ async function flightsPost(origin, destination, date) {
 
     // tranformanfo a informação da data passada pelo usuario para a data
     const flightDate = dayjs(date, 'DD-MM-YYYY');
-    
+
     // verificando de a data do voo é anterior a data atual
     if (flightDate.isBefore(currentDate)) {
         // se a data do voo não for maior que a data atual
-        throw errors.UnprocessableEntity();
+        throw errors.UnprocessableEntity("A data do voo deve ser maior do que a data atual.");
     }
 
     //se tudo cer certo vou enviar os dados para o baco
@@ -51,9 +52,17 @@ async function flightsPost(origin, destination, date) {
 
 async function flightsGet(origin, destination, smallerDate, biggerDate) {
 
-    //se tudo cer certo vou enviar os dados para o baco
-    const result = await flightsRepository.flightsGet(origin, destination, smallerDate, biggerDate);
+    const { error: errorDateSmallerDate } = flightsGetTable.validate(smallerDate)
+    const { error: errorDateBiggerDate } = flightsGetTable.validate(biggerDate)
+
+    // verificando de o o formato das datas estão ok
+    if (errorDateSmallerDate || errorDateBiggerDate){
+        throw UnprocessableEntity("Formado de data invalida")
+    }
+
+        //se tudo cer certo vou enviar os dados para o baco
+        const result = await flightsRepository.flightsGet(origin, destination, smallerDate, biggerDate);
     return result;
 }
 
-export const flightsServices = { flightsPost , flightsGet}
+export const flightsServices = { flightsPost, flightsGet }
