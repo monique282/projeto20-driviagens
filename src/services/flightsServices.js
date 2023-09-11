@@ -11,8 +11,19 @@ import { flightsRepository } from "../repositories/flightsRepository.js";
 import { flightsGetTable } from "../schemas/ciFliPaTrSchema.js";
 dayjs.extend(customParseFormat);
 
+function formatDateToYYYYMMDD(date) {
+    console.log(date)
+    const parts = date.split('-');
+    if (parts.length === 3) {
+      const [dia, mes, ano] = parts;
+      return `${ano}-${mes}-${dia}`;
+    }
+    return null; 
+  }
+
 //função para enviar pro banco os dados de origem destino e data
 async function flightsPost(origin, destination, date) {
+    console.log(origin, destination, date)
 
     // verificando se a cidade de origin existe na tabela de cidades
     const thereIsCityOrigin = await citesRepository.citesIdGet(origin);
@@ -39,10 +50,11 @@ async function flightsPost(origin, destination, date) {
     // preciso verificar se a data do voo é no futuro
     // pegando a data atual
     const currentDate = dayjs();
-
+    
     // transformando a informação da data passada pelo usuario para a data
-    const flightDate = dayjs(date, 'DD-MM-YYYY');
-
+    const format = formatDateToYYYYMMDD(date)
+    const flightDate = dayjs(format, 'YYYY-MM-DD');
+    console.log(flightDate)
     // verificando de a data do voo é anterior a data atual
     // se for
     if (flightDate.isBefore(currentDate)) {
@@ -51,7 +63,7 @@ async function flightsPost(origin, destination, date) {
     };
 
     //se tudo cer certo vou enviar os dados para o baco
-    const result = await flightsRepository.flightsPost(origin, destination, date);
+    const result = await flightsRepository.flightsPost(origin, destination, format);
     return result;
 };
 
@@ -70,10 +82,13 @@ async function flightsGet(origin, destination, smallerDate, biggerDate) {
 
     // verificar de a data smallerDate > biggerDate
     // transformando a informação pelo usuario smallerDate, para uma data
-    const currentDate = dayjs(smallerDate, 'DD-MM-YYYY');
+    const format = formatDateToYYYYMMDD(smallerDate)
+    const currentDate = dayjs(format, 'YYYY-MM-DD');
 
     // transformando a informação pelo usuario biggerDate, para uma data
-    const flightDate = dayjs(biggerDate, 'DD-MM-YYYY');
+    const format2 = formatDateToYYYYMMDD(biggerDate)
+    const flightDate = dayjs(format2, 'YYYY-MM-DD');
+
 
     // verificando se a data do voo é anterior a data atual
     // se é

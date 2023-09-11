@@ -9,6 +9,9 @@ export async function passengersPost(req, res) {
 
     // pegando os dados enviados pelo body
     const { firstName, lastName } = req.body;
+    console.log(firstName)
+    console.log(lastName)  
+
 
     // fazendo a requisição verificar se ta tudo certo
     const result = await passengersServices.passengersPost(firstName, lastName);
