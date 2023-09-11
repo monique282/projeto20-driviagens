@@ -10,4 +10,4 @@ async function travelsPost(passengerId, flightId) {
     return serveSend;
 };
 
-export const travelsRepository = { travelsPost }
+export const travelsRepository = { travelsPost };

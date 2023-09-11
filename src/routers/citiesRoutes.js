@@ -1,3 +1,5 @@
+// essa pasta é pra reunir todas as rotas relacionas a cidade
+
 import { Router } from "express";
 import { validateJoiForAll } from "../middlewares/validateSchema.js";
 import { citiesTable } from "../schemas/ciFliPaTrSchema.js";
