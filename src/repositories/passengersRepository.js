@@ -1,8 +1,7 @@
-// essa função é chamada la la no sevises
+// essa função é chamada la no sevises
 
 import { db } from "../dataBase/databaseConnection.js";
 import { errors } from "../errors/allMistakes.js";
-
 
 // função que envia para o banco o nome e o sobre nome do passageiro
 async function passengersPost(firstName, lastName) {
