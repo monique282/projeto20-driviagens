@@ -54,14 +54,14 @@ async function passengersGet(name) {
     LIMIT $1;  
     `
         serveSend = await db.query(query, [limit]);
-    }
+    };
 
     // verificando se o numero de linhas for maior que 10
     if (serveSend.rows.length > limit) {
-        throw errors.intervalServerError("Too many results")
-    }
+        throw errors.intervalServerError("Too many results");
+    };
 
     return serveSend.rows;
 };
 
-export const passengersRepository = { passengersPost, idPassengersGet, passengersGet }
+export const passengersRepository = { passengersPost, idPassengersGet, passengersGet };
