@@ -9,7 +9,6 @@ export async function flightsPost(req, res) {
 
     // pegando os dados enviados pelo body
     const { origin, destination, date } = req.body;
-    console.log(origin, destination, date)
 
     // fazendo a verificação se ta tudo certo
     const result = await flightsServices.flightsPost(origin, destination, date);
