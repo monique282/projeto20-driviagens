@@ -14,7 +14,7 @@ export function validateJoiForAll(joi) {
         };
         next();
     };
-}
+};
 
 
 
