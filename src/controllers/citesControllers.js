@@ -4,7 +4,6 @@
 import httpStatus from "http-status";
 import { citesServices } from "../services/citesServices.js";
 
-
 // função que envia os dados das cidades de partida e chegada
 export async function citesPost(req, res) {
 
@@ -16,4 +15,4 @@ export async function citesPost(req, res) {
 
     // se tudo der certo
     res.sendStatus(httpStatus.OK);
-}
+};

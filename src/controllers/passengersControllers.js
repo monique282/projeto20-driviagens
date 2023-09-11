@@ -15,7 +15,7 @@ export async function passengersPost(req, res) {
    
     // se tudo der certo
     res.sendStatus(httpStatus.OK);
-}
+};
 
 // função que pega os dados de nome e quantidade de vools
 export async function passengersGet(req, res) {
@@ -28,4 +28,4 @@ export async function passengersGet(req, res) {
    
     // se tudo der certo
     res.send(result).status(httpStatus.OK);
-}
+};

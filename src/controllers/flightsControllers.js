@@ -15,7 +15,7 @@ export async function flightsPost(req, res) {
 
     // se tudo der certo
     res.sendStatus(httpStatus.OK);
-}
+};
 
 // função que pega os dados de da viagem como destino partida e data de voo
 export async function flightsGet(req, res) {
@@ -32,4 +32,4 @@ export async function flightsGet(req, res) {
 
     // se tudo der certo
     res.send(result).status(httpStatus.OK);
-}
+};

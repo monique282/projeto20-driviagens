@@ -15,4 +15,4 @@ export async function travelsPost(req, res) {
 
     // se tudo der certo
     res.sendStatus(httpStatus.OK);
-}
+};
