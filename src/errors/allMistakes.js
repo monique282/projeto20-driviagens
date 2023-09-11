@@ -1,6 +1,7 @@
 
-// esse arquivo serve para colocar os erros quando der algum
+// esse arquivo serve para colocar os erros chamando com o comando throw
 
+//404
 export function notFound(item = "Item") {
     return {
         type: "notFound",
@@ -8,6 +9,7 @@ export function notFound(item = "Item") {
     }
 }
 
+//409
 export function conflict(item = "Item") {
     return {
         type: "conflict",
@@ -15,6 +17,7 @@ export function conflict(item = "Item") {
     }
 }
 
+//409
 export function equalConflicts() {
     return {
         type: "conflict",
@@ -22,6 +25,7 @@ export function equalConflicts() {
     }
 }
 
+//422
 export function UnprocessableEntity(item) {
     return {
         type: "Unprocessable Entity",
@@ -29,6 +33,7 @@ export function UnprocessableEntity(item) {
     }
 }
 
+//400
 export function BadRequest(item) {
     return {
         type: "Bad request",
@@ -36,6 +41,7 @@ export function BadRequest(item) {
     }
 }
 
+//500
 export function intervalServerError(item) {
     return {
         type: "internal server error",
@@ -43,6 +49,7 @@ export function intervalServerError(item) {
     }
 }
 
-
-
-export const errors = { notFound, conflict, UnprocessableEntity, equalConflicts, BadRequest, intervalServerError }
+export const errors = {
+    notFound, conflict, UnprocessableEntity,
+    equalConflicts, BadRequest, intervalServerError
+}
