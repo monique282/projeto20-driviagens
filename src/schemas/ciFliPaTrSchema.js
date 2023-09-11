@@ -1,3 +1,5 @@
+// esse arquivo aqui é sobre todas as validações joi
+
 import joi from "joi";
 import joiDate from "@joi/date";
 const JoiExtended = joi.extend(joiDate);
