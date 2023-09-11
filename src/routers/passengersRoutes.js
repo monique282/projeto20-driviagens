@@ -1,3 +1,5 @@
+// essa função é pra reonuir todas as rotas relacionadas a passageiros
+
 import { Router } from "express";
 import { validateJoiForAll } from "../middlewares/validateSchema.js";
 import { passengersTable } from "../schemas/ciFliPaTrSchema.js";
