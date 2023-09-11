@@ -1,3 +1,4 @@
+
 import { Router } from "express";
 import { validateJoiForAll } from "../middlewares/validateSchema.js";
 import { travelsPost } from "../controllers/travelsControllers.js";
