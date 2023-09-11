@@ -5,7 +5,7 @@ import { db } from "../dataBase/databaseConnection.js";
 // função que envia para o banco o nome e o sobre nome do passageiro
 async function flightsPost(origin, destination, date) {
 
-    const serveSend = await db.query('INSERT INTO flights ( origin, destination, date) VALUES ($1, $2, $3)', [origin, destination, date]);
+    const serveSend = await db.query('INSERT INTO flights ( origin, destination, date) VALUES ($1, $2, $3);', [origin, destination, date]);
     return serveSend;
 };
 
@@ -31,7 +31,7 @@ JOIN cities AS destination ON flights.destination = destination.id
 `;
 
     // colocando os parametros
-    const values = []
+    const values = [];
 
     // contador 
     let paramCount = 0;
@@ -41,7 +41,7 @@ JOIN cities AS destination ON flights.destination = destination.id
         paramCount++;
         sql += ` WHERE origin.name = $${paramCount}`;
         values.push(origin);
-    }
+    };
 
     // se existir a vontade de ordenar destination
     if (destination) {
@@ -50,9 +50,9 @@ JOIN cities AS destination ON flights.destination = destination.id
             sql += ` AND destination.name = $${paramCount}`;
         } else {
             sql += ` WHERE destination.name = $${paramCount}`;
-        }
+        };
         values.push(destination);
-    }
+    };
 
     // procurar por periodo de data
     if (smallerDate && biggerDate) {
@@ -61,15 +61,16 @@ JOIN cities AS destination ON flights.destination = destination.id
             sql += ` AND flights.date >= $${paramCount - 1} AND flights.date <= $${paramCount}`;
         } else {
             sql += ` WHERE flights.date >= $${paramCount - 1} AND flights.date <= $${paramCount}`;
-        }
+        };
         values.push(smallerDate, biggerDate);
-    }
+    };
 
     // adicionando a ordenação por cidade
     sql += ' ORDER BY flights.date';
 
+    // se tudo der certp
     const serveSend = await db.query(sql, values);
     return serveSend.rows;
 };
 
-export const flightsRepository = { flightsPost, idflightsGet, flightsGet }
+export const flightsRepository = { flightsPost, idflightsGet, flightsGet };
