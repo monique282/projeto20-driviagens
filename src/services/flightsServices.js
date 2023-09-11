@@ -1,5 +1,5 @@
 
-// essa função serve para poder tratas os assuntos de serviços
+// essa pasta serve para poder tratar os assuntos de serviços
 // ela é chamada nos controles
 // ela chama o repository
 
