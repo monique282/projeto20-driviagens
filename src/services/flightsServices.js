@@ -74,6 +74,19 @@ async function flightsGet(origin, destination, smallerDate, biggerDate) {
         throw errors.UnprocessableEntity("A data inicial tem que ser maior que a data final.");
     }
 
+    //verificar se smallerDate e biggerDate foram passados
+    if (!smallerDate || !biggerDate) {
+        if (!smallerDate) {
+            throw errors.BadRequest("Se deseja fazer o filtro usando um periodo de data informe a data menor")
+        } 
+        if (!biggerDate) {
+            throw errors.BadRequest("Se deseja fazer o filtro usando um periodo de data informe a data maior")
+        } 
+        throw errors.BadRequest("Se deseja fazer o filtro usando um periodo de data informe data menor e data mario")
+    }
+
+
+
     //se tudo cer certo vou enviar os dados para o baco
     const result = await flightsRepository.flightsGet(origin, destination, smallerDate, biggerDate);
     return result;

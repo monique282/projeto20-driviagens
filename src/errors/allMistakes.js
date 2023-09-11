@@ -29,6 +29,13 @@ export function UnprocessableEntity(item) {
     }
 }
 
+export function BadRequest(item) {
+    return {
+        type: "Bad request",
+        message: `${item}`
+    }
+}
 
 
-export const errors = { notFound, conflict, UnprocessableEntity, equalConflicts }
+
+export const errors = { notFound, conflict, UnprocessableEntity, equalConflicts, BadRequest }
