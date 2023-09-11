@@ -1,5 +1,5 @@
 import cors from "cors";
-import express, { Router, json } from "express";
+import express, { json } from "express";
 import "express-async-errors";
 import dotenv from "dotenv";
 import router from "./routers/indexRoutes.js";
