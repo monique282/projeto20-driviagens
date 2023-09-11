@@ -26,6 +26,7 @@ async function passengersGet(name) {
     // comando sql
     let serveSend = '';
 
+    // verificando de o nome foi enviado
     if (name) {
         const query = `
     SELECT
@@ -40,6 +41,7 @@ async function passengersGet(name) {
   `
         const nameFilter = `%${name}%`;
         serveSend = await db.query(query, [nameFilter, limit]);
+
     } else {
         const query = `
     SELECT
