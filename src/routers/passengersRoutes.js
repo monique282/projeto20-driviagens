@@ -6,6 +6,6 @@ import { passengersPost } from "../controllers/passengersControllers.js";
 const passengrsRouter = Router();
 
 passengrsRouter.post("/passengers", validateJoiForAll(passengersTable), passengersPost);
-//passengrsRouter.get("/passengers/travels", registerPost);
+passengrsRouter.get("/passengers/travels");
 
 export default passengrsRouter;
