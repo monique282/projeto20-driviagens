@@ -75,14 +75,13 @@ async function flightsGet(origin, destination, smallerDate, biggerDate) {
     }
 
     //verificar se smallerDate e biggerDate foram passados
-    if (!smallerDate || !biggerDate) {
+    if (smallerDate && !biggerDate || !smallerDate && biggerDate ) {
         if (!smallerDate) {
             throw errors.BadRequest("Se deseja fazer o filtro usando um periodo de data informe a data menor")
         } 
         if (!biggerDate) {
             throw errors.BadRequest("Se deseja fazer o filtro usando um periodo de data informe a data maior")
         } 
-        throw errors.BadRequest("Se deseja fazer o filtro usando um periodo de data informe data menor e data mario")
     }
 
 
