@@ -19,7 +19,7 @@ router.use([
     //rotas de viagem
     travelsRouter,
 
-    //rotas de vools
+    //rotas de voos
     flightsRouter
 ]);
 
