@@ -1,6 +1,8 @@
+// essa função é pra reonuir todas as rotas relacionadas a voos
+
 import { Router } from "express";
 import { validateJoiForAll } from "../middlewares/validateSchema.js";
-import { flightsGetTable, flightsTable } from "../schemas/ciFliPaTrSchema.js";
+import { flightsTable } from "../schemas/ciFliPaTrSchema.js";
 import { flightsGet, flightsPost } from "../controllers/flightsControllers.js";
 
 
