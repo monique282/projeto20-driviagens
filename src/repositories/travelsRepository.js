@@ -6,7 +6,6 @@ import { db } from "../dataBase/databaseConnection.js";
 async function travelsPost(passengerId, flightId) {
 
     const serveSend = await db.query(`INSERT INTO travels ("passengerId", "flightId") VALUES ($1, $2);`, [passengerId, flightId]);
-
     return serveSend;
 };
 
