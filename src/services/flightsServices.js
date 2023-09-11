@@ -35,7 +35,7 @@ async function flightsPost(origin, destination, date) {
     // pegando a data atual
     const currentDate = dayjs().format('DD-MM-YYYY');
 
-    // tranformanfo a informação da data passada pelo usuario para a data
+    // transformando a informação da data passada pelo usuario para a data
     const flightDate = dayjs(date, 'DD-MM-YYYY');
 
     // verificando de a data do voo é anterior a data atual
@@ -56,12 +56,26 @@ async function flightsGet(origin, destination, smallerDate, biggerDate) {
     const { error: errorDateBiggerDate } = flightsGetTable.validate(biggerDate)
 
     // verificando de o o formato das datas estão ok
-    if (errorDateSmallerDate || errorDateBiggerDate){
+    if (errorDateSmallerDate || errorDateBiggerDate) {
         throw UnprocessableEntity("Formado de data invalida")
     }
 
-        //se tudo cer certo vou enviar os dados para o baco
-        const result = await flightsRepository.flightsGet(origin, destination, smallerDate, biggerDate);
+    // verificar de a data smallerDate > biggerDate
+
+    // transformando a informação da data passada smallerDate pelo usuario
+    const currentDate = dayjs(smallerDate, 'DD-MM-YYYY');
+
+    // transformando a informação da data passada biggerDate pelo usuario
+    const flightDate = dayjs(biggerDate, 'DD-MM-YYYY');
+
+    // verificando de a data do voo é anterior a data atual
+    if (flightDate.isBefore(currentDate)) {
+        // se a data do voo não for maior que a data atual
+        throw errors.UnprocessableEntity("A data inicial tem que ser maior que a data final.");
+    }
+
+    //se tudo cer certo vou enviar os dados para o baco
+    const result = await flightsRepository.flightsGet(origin, destination, smallerDate, biggerDate);
     return result;
 }
 

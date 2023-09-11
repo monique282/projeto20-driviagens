@@ -1,4 +1,6 @@
 import joi from "joi";
+import joiDate from "@joi/date";
+const JoiExtended = joi.extend(joiDate);
 
 export const passengersTable = joi.object({
 
@@ -18,11 +20,8 @@ export const flightsTable = joi.object({
     date: joi.string().pattern(new RegExp(/^\d{2}-\d{2}-\d{4}$/)).required()
 });
 
-export const flightsGetTable = joi.object({
-    
-    'smaller-date': joi.string().regex(/^\d{2}-\d{2}-\d{4}$/),
-    'bigger-date': joi.string().regex(/^\d{2}-\d{2}-\d{4}$/)
-  });
+
+export const flightsGetTable = JoiExtended.date().format('DD-MM-YYYY');
 
 export const travelsTable = joi.object({
 
