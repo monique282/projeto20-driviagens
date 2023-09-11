@@ -19,7 +19,7 @@ async function flightsPost(origin, destination, date) {
 
     // se existe
     if (thereIsCityOrigin.length === 0) {
-        throw errors.notFound("A cidade");
+        throw errors.notFound("Cidade");
     };
 
     // verificando se a cidade de destino existe na tabela de cidades
@@ -27,7 +27,7 @@ async function flightsPost(origin, destination, date) {
 
     // se existe
     if (thereIsCityDestination.length === 0) {
-        throw errors.notFound("A cidade ");
+        throw errors.notFound("Cidade ");
     };
 
     //verificando se origem e destino são iguais
@@ -38,7 +38,7 @@ async function flightsPost(origin, destination, date) {
 
     // preciso verificar se a data do voo é no futuro
     // pegando a data atual
-    const currentDate = dayjs().format('DD-MM-YYYY');
+    const currentDate = dayjs();
 
     // transformando a informação da data passada pelo usuario para a data
     const flightDate = dayjs(date, 'DD-MM-YYYY');
