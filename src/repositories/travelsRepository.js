@@ -1,7 +1,6 @@
-// essa função é chamada la la no sevises
+// essa função é chamada la no sevises
 
 import { db } from "../dataBase/databaseConnection.js";
-
 
 // função que envia para o banco os dados da viagem
 async function travelsPost(passengerId, flightId) {
