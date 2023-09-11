@@ -30,6 +30,6 @@ async function passengersGet(name) {
    // ja que tudo deu certo
    const result = await passengersRepository.passengersGet(name);
    return result;
-}
+};
 
 export const passengersServices = { passengersPost, passengersGet };
