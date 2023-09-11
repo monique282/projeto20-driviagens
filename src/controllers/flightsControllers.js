@@ -3,8 +3,6 @@
 
 import httpStatus from "http-status";
 import { flightsServices } from "../services/flightsServices.js";
-import { validateJoiForAll } from "../middlewares/validateSchema.js";
-import { flightsGetTable } from "../schemas/ciFliPaTrSchema.js";
 
 // função que pega os dados de da viagem como destino partida e data de voo
 export async function flightsPost(req, res) {
@@ -16,8 +14,7 @@ export async function flightsPost(req, res) {
     const result = await flightsServices.flightsPost(origin, destination, date);
 
     // se tudo der certo
-    res.sendStatus(httpStatus.NO_CONTENT);
-
+    res.sendStatus(httpStatus.OK);
 }
 
 // função que pega os dados de da viagem como destino partida e data de voo
@@ -32,6 +29,5 @@ export async function flightsGet(req, res) {
     const result = await flightsServices.flightsGet(origin, destination, smallerDate, biggerDate);
 
     // se tudo der certo
-    res.send(result).status(httpStatus.NO_CONTENT);
-
+    res.send(result).status(httpStatus.OK);
 }

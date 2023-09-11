@@ -14,7 +14,7 @@ export async function passengersPost(req, res) {
     const result = await passengersServices.passengersPost(firstName, lastName);
    
     // se tudo der certo
-    res.sendStatus(httpStatus.NO_CONTENT);
+    res.sendStatus(httpStatus.OK);
 
 }
 
@@ -28,6 +28,5 @@ export async function passengersGet(req, res) {
     const result = await passengersServices.passengersGet(name);
    
     // se tudo der certo
-    res.send(result).status(httpStatus.NO_CONTENT);
-
+    res.send(result).status(httpStatus.OK);
 }

@@ -24,6 +24,7 @@ async function passengersGet(name) {
     // fazendo o limiti
     const limit = 10;
 
+    // comando sql
     let serveSend = '';
 
     if (name) {
